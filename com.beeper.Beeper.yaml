@@ -63,7 +63,7 @@ modules:
           - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
           - done
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
-          - zypak-wrapper /app/bin/beeper    
+          - zypak-wrapper /app/bin/beeper "$@"   
 
       - type: file
         url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.76.15.AppImage
