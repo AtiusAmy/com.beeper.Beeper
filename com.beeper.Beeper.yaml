@@ -1,10 +1,10 @@
-app-id: im.riot.Riot
+app-id: com.beeper.Beeper
 base: org.electronjs.Electron2.BaseApp
 base-version: '22.08'
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: element
+command: beeper
 separate-locales: false
 finish-args:
   # Version required to use the document-portal v4
@@ -48,32 +48,28 @@ cleanup:
   - /share/man
   - /man
 modules:
-  - shared-modules/libsecret/libsecret.json
-  - name: riot
+  - name: beeper
     buildsystem: simple
     build-commands:
-      - install element.sh /app/bin/element
-      - install -Dm644 im.riot.Riot.desktop /app/share/applications/im.riot.Riot.desktop
-      - install -Dm644 im.riot.Riot.metainfo.xml /app/share/metainfo/im.riot.Riot.metainfo.xml
-      - rm element.sh im.riot.Riot.desktop im.riot.Riot.metainfo.xml
-      - install -Dm644 resources/img/element.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
-      - mkdir /app/Element
-      - cp -r * /app/Element
-      - chmod -R a-s,go+rX,go-w "/app/Element"
+      - chmod +x beeper-3.76.15.AppImage
+      - ./beeper-3.76.15.AppImage --appimage-extract
+      - mv squashfs-root /app/bin/beeper-run
+      - install -D beeper -t /app/bin
     sources:
-      - type: archive
-        only-arches:
-          - x86_64
-        url: https://packages.element.io/desktop/install/linux/glibc-x86-64/element-desktop-1.11.43.tar.gz
-        sha256: 543ba589294aded1ffce6881b76fb4cce5f9e00435b204e5d37433ff6f66e61f
-        x-checker-data:
-          type: html
-          url: https://packages.element.io/desktop/install/linux/glibc-x86-64/index.html
-          version-pattern: element-desktop-([\d\.-]*).tar.gz
-          url-template: https://packages.element.io/desktop/install/linux/glibc-x86-64/element-desktop-$version.tar.gz
+      - type: script
+        dest-filename: beeper
+        commands:
+          - for i in {0..9}; do
+          - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
+          - done
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - zypak-wrapper /app/bin/beeper    
+
       - type: file
-        path: element.sh
+        url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.76.15.AppImage
+        sha512: 3c3d4e596e6057ebb242713c80ff04bc870d7c36a88107021b0c8bb491b153efa2f026aed0359e583d81478f4c907160e982ea38c13f6c5e029423bb6c1951ac
       - type: file
-        path: im.riot.Riot.metainfo.xml
+        path: com.beeper.Beeper.metainfo.xml
       - type: file
-        path: im.riot.Riot.desktop
+        path: com.beeper.Beeper.desktop
+

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Name=Element
+Name=Beeper
 Comment=A Matrix-based instant messaging client
-Icon=im.riot.Riot
-Exec=/app/bin/element %U
+Icon=com.beeper.Beeper
+Exec=/app/bin/beeper %U
 Categories=Network;InstantMessaging;Chat;VideoConference;
 MimeType=x-scheme-handler/element;
 StartupWMClass=element
-Keywords=Matrix;matrix.org;chat;irc;communications;talk;riot;vector;
+Keywords=Matrix;matrix.org;chat;irc;communications;talk;beeper;vector;
