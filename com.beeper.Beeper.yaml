@@ -4,7 +4,7 @@ base-version: '22.08'
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: beeper
+command: startbeeper
 separate-locales: false
 finish-args:
   # Version required to use the document-portal v4
@@ -53,17 +53,17 @@ modules:
     build-commands:
       - chmod +x beeper-3.76.15.AppImage
       - ./beeper-3.76.15.AppImage --appimage-extract
-      - mv squashfs-root /app/bin/beeper-run
-      - install -D beeper -t /app/bin
+      - mv squashfs-root /app/bin/beeper
+      - install -D startbeeper -t /app/bin
     sources:
       - type: script
-        dest-filename: beeper
+        dest-filename: startbeeper
         commands:
           - for i in {0..9}; do
           - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
           - done
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
-          - zypak-wrapper /app/bin/beeper "$@"   
+          - zypak-wrapper /app/bin/beeper/beeper "$@"
 
       - type: file
         url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.76.15.AppImage
