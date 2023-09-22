@@ -55,6 +55,9 @@ modules:
       - ./beeper-3.76.15.AppImage --appimage-extract
       - mv squashfs-root /app/bin/beeper
       - install -D startbeeper -t /app/bin
+      - install -Dm644 /app/bin/beeper/usr/share/icons/hicolor/256x256/apps/beeper.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 com.beeper.Beeper.metainfo.xml /app/share/metainfo/com.beeper.Beeper.metainfo.xml
+      - install -Dm644 com.beeper.Beeper.desktop /app/share/applications/com.beeper.Beeper.desktop
     sources:
       - type: script
         dest-filename: startbeeper
@@ -72,4 +75,3 @@ modules:
         path: com.beeper.Beeper.metainfo.xml
       - type: file
         path: com.beeper.Beeper.desktop
-
