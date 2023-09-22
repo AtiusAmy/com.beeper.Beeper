@@ -13,15 +13,12 @@
     <ul>
       <li>Communicate with people everywhere! Using Matrix Bridge</li>
     </ul>
-    <p>Preliminary Wayland support since 1.7.25.</p>
-    <p>To try running Element natively under Wayland, run:</p>
-    <p>flatpak run im.riot.Riot --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland</p>
-    <p>For GNOME, window decorations are currently missing and you'll have to use keyboard shortcuts instead to resize the window.</p>
+    <p>This wrapper is not officially endorsed by the Beeper Team.</p>
   </description>
   <screenshots>
     <screenshot>
       <caption>Element logged-in frontend</caption>
-      <image type="source">https://user-images.githubusercontent.com/2221064/137519256-655fe0f9-55f0-44a4-b681-83711654fff0.png</image>
+      <image type="source">https://raw.githubusercontent.com/AtiusAmy/flattool-gui/main/beeper.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1">

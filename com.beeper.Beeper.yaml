@@ -57,6 +57,7 @@ modules:
       - install -D startbeeper -t /app/bin
       - install -D com.beeper.Beeper.png /app/share/icons/com.beeper.Beeper.png
       - install -D com.beeper.Beeper.desktop -t /app/share/applications/
+      - install -D $FLATPAK_ID.metainfo.xml /app/share/metainfo/$FLATPAK_ID.appdata.xml
     sources:
       - type: script
         dest-filename: startbeeper
