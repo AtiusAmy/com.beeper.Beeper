@@ -51,8 +51,8 @@ modules:
   - name: beeper
     buildsystem: simple
     build-commands:
-      - chmod +x beeper-3.77.21.AppImage
-      - ./beeper-3.77.21.AppImage --appimage-extract
+      - chmod +x beeper-3.76.15.AppImage
+      - ./beeper-3.76.15.AppImage --appimage-extract
       - mv squashfs-root /app/bin/beeper
       - install -D startbeeper -t /app/bin
     sources:
@@ -67,8 +67,8 @@ modules:
 
       - type: file
         only-arches: [x86_64]
-        url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.77.21.AppImage
-        sha512: cd070a6561714db5c12a1306a1e222c7e215aaadc7fbf40050fdc7b71bf5313a1eb704f0bb0efecd9200fec1c2c96e010a5503f8a71d54eb90b39385ffc0617d
+        url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.76.15.AppImage
+        sha512: 3c3d4e596e6057ebb242713c80ff04bc870d7c36a88107021b0c8bb491b153efa2f026aed0359e583d81478f4c907160e982ea38c13f6c5e029423bb6c1951ac
       - type: file
         path: com.beeper.Beeper.metainfo.xml
       - type: file
