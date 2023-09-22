@@ -47,15 +47,26 @@ cleanup:
   - /share/info
   - /share/man
   - /man
+build-options:
+  build-args:
+    - --share=network
 modules:
   - name: beeper
     buildsystem: simple
     build-commands:
-      - chmod +x beeper-3.76.15.AppImage
-      - ./beeper-3.76.15.AppImage --appimage-extract
+      - sh download-appimage
+      - chmod +x ${FLATPAK_ID}.AppImage
+      - ./${FLATPAK_ID}.AppImage --appimage-extract
       - mv squashfs-root /app/bin/beeper
       - install -D startbeeper -t /app/bin
+      - install -Dm644 /app/bin/beeper/usr/share/icons/hicolor/256x256/apps/beeper.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 com.beeper.Beeper.metainfo.xml /app/share/metainfo/com.beeper.Beeper.metainfo.xml
+      - install -Dm644 com.beeper.Beeper.desktop /app/share/applications/com.beeper.Beeper.desktop
     sources:
+      - type: script
+        dest-filename: download-appimage
+        commands:
+          - wget -O ${FLATPAK_ID}.AppImage https://download.beeper.com/linux/appImage/x64
       - type: script
         dest-filename: startbeeper
         commands:
@@ -64,12 +75,7 @@ modules:
           - done
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - zypak-wrapper /app/bin/beeper/beeper "$@"
-
-      - type: file
-        url: https://github.com/AtiusAmy/flattool-gui/releases/download/0.2.0-beta/beeper-3.76.15.AppImage
-        sha512: 3c3d4e596e6057ebb242713c80ff04bc870d7c36a88107021b0c8bb491b153efa2f026aed0359e583d81478f4c907160e982ea38c13f6c5e029423bb6c1951ac
       - type: file
         path: com.beeper.Beeper.metainfo.xml
       - type: file
         path: com.beeper.Beeper.desktop
-
