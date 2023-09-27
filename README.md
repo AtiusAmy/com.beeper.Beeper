@@ -1,4 +1,4 @@
-Amy's Beeper flatpak project forked with my customizations. 
+Amy's Beeper flatpak project forked with my customizations since they dont respond to pull requests.
 
 *This will download the LATEST Beeper appimage release. If you are running into issues since Beeper is technically still in open beta, refer to upcoming instruction to revert back a version. Will update later.*
 
