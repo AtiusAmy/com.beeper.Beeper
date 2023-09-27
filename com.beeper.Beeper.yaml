@@ -75,7 +75,7 @@ modules:
           - done
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - zypak-wrapper /app/bin/beeper/beeper "$@"
-     - type: file
+      - type: file
         path: com.beeper.Beeper.metainfo.xml
       - type: file
         path: com.beeper.Beeper.desktop
