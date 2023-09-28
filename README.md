@@ -13,6 +13,10 @@ As NON-ROOT user:
     - run 'flatpak install org.freedesktop.Sdk'
     - select the option for version 22.08
     - select 'y' to install
+  - Install Electron Base App
+    - run 'flatpak install org.electronjs.Electron2.BaseApp'
+    - select the option for version 22.08
+    - select 'y' to install
   - Install Flatpak Builder
     - run 'flatpak install org.flatpak.Builder'
     - select 'y' to install
