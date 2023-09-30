@@ -4,7 +4,7 @@ base-version: '22.08'
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: startbeeper
+command: beeper
 separate-locales: false
 finish-args:
   # Version required to use the document-portal v4
@@ -51,31 +51,26 @@ build-options:
   build-args:
     - --share=network
 modules:
-  - name: beeper
+  - name: beeper-maker
     buildsystem: simple
     build-commands:
       - sh download-appimage
       - chmod +x ${FLATPAK_ID}.AppImage
       - ./${FLATPAK_ID}.AppImage --appimage-extract
-      - mv squashfs-root /app/bin/beeper
-      - install -D startbeeper -t /app/bin
-      - install -Dm644 /app/bin/beeper/usr/share/icons/hicolor/256x256/apps/beeper.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - mv squashfs-root /app/Beeper
+      - install beeper.sh /app/bin/beeper
+      - install -Dm644 /app/Beeper/usr/share/icons/hicolor/256x256/apps/beeper.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
       - install -Dm644 com.beeper.Beeper.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dm644 com.beeper.Beeper.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - chmod -R a-s,go+rX,go-w "/app/bin/beeper"
     sources:
       - type: script
         dest-filename: download-appimage
         commands:
           - wget -O ${FLATPAK_ID}.AppImage https://download.beeper.com/linux/appImage/x64
-      - type: script
-        dest-filename: startbeeper
-        commands:
-          - for i in {0..9}; do
-          - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
-          - done
-          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
-          - zypak-wrapper /app/bin/beeper/beeper "$@"
       - type: file
         path: com.beeper.Beeper.metainfo.xml
       - type: file
         path: com.beeper.Beeper.desktop
+      - type: file
+        path: beeper.sh
