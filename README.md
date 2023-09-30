@@ -6,19 +6,14 @@ To build and install, do the following:
 
 Install flatpak and git
 
-  - run 'sudo "insert package manager command here" install flatpak git'
+  - run 'sudo "insert package manager command here" install flatpak flatpak-builder git'
 
 As NON-ROOT user:
   - Install Flatpak SDK
-    - run 'flatpak install org.freedesktop.Sdk'
-    - select the option for version 22.08
+    - run 'flatpak install org.freedesktop.Sdk//23.08'
     - select 'y' to install
   - Install Electron Base App
-    - run 'flatpak install org.electronjs.Electron2.BaseApp'
-    - select the option for version 22.08
-    - select 'y' to install
-  - Install Flatpak Builder
-    - run 'flatpak install org.flatpak.Builder'
+    - run 'flatpak install org.electronjs.Electron2.BaseApp//23.08'
     - select 'y' to install
   - Make a build directory in your home folder and go to it
     - run 'mkdir /home/$USER/build && cd /home/$USER/build'
@@ -27,7 +22,7 @@ As NON-ROOT user:
   - Change into Beeper directory
     - run 'cd com.beeper.Beeper'
   - Build the package and put into local repo
-    - run 'flatpak run org.flatpak.Builder --repo=testing-beeper-repo build-dir com.beeper.Beeper.yaml'
+    - run 'flatpak-builder --repo=testing-beeper-repo build-dir com.beeper.Beeper.yaml'
   - Add local repo to flatpak (current $USER only; omit '--user' for system-wide installation)
     - run 'flatpak --user remote-add --no-gpg-verify testing-beeper-repo testing-beeper-repo' 
   - Update flatpak appstream to install
@@ -37,3 +32,4 @@ As NON-ROOT user:
     - select 'y'
   - Enjoy your application
     - If things were done right, you should be greeted with Beeper's login screen and follow the screens to log into your instance.
+
