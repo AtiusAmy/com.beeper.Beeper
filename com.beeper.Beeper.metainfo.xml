@@ -3,7 +3,7 @@
   <id>com.beeper.Beeper</id>
   <name>Beeper</name>
   <project_license>Proprietary</project_license>
-  <developer_name>New Vector Ltd</developer_name>
+  <developer_name>Beeper Team</developer_name>
   <summary>All your chats in one app. Yes, really.</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <url type="homepage">https://www.beeper.com/</url>
@@ -12,6 +12,12 @@
     <p>More than group chat: communication</p>
     <ul>
       <li>Communicate with people everywhere! Using Matrix Bridge</li>
+      <li>Search across all apps</li>
+      <li>Prioritize your inbox</li>
+      <li>Send scheduled messages</li>
+      <li>One Unified inbox</li>
+    </ul>
+    <p>This wrapper is not officially endorsed by the Beeper Team.</p>
     </ul>
   </description>
   <content_rating type="oars-1.1">
